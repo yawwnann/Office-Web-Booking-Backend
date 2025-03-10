@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BookingTransaction extends Model
 {
-
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
@@ -24,18 +23,28 @@ class BookingTransaction extends Model
         'office_space_id',
     ];
 
-    public static function genereteUniqueTrxId()
+    /**
+     * Generate Unique Booking Transaction ID
+     *
+     * @return string
+     */
+    public static function generateUniqueTrxId()
     {
         $prefix = 'FO';
         do {
-            $randomString = $prefix . mt_rand(1000, 9999);
+            $randomString = $prefix . mt_rand(100000, 999999);
         } while (self::where('booking_trx_id', $randomString)->exists());
+
+        return $randomString;
     }
 
+    /**
+     * Relasi ke OfficeSpace
+     *
+     * @return BelongsTo
+     */
     public function officeSpace(): BelongsTo
     {
         return $this->belongsTo(OfficeSpace::class, 'office_space_id');
     }
-
-
 }
