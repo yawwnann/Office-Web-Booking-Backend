@@ -23,7 +23,10 @@ class UsersResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->helperText('Gunakan nama data dengan tepat.')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
