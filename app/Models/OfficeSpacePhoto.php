@@ -8,9 +8,8 @@ class OfficeSpacePhoto extends Model
 {
     // Menambahkan kolom 'photo' ke dalam fillable
     protected $fillable = [
-        'photo',  // Menambahkan kolom photo agar dapat di-assign massal
-        // Kolom lainnya jika ada, misalnya:
-        // 'office_space_id',
+        'photo',  // Melakukan asign masal untuk bagian foto
+
     ];
 
     // Jika Anda menggunakan relasi, pastikan mendefinisikannya
